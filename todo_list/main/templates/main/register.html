@@ -1,0 +1,17 @@
+<h1>register</h1>
+
+
+
+<form method="POST">
+    {% csrf_token %}
+    <label>{{form.username.label}}</label>
+    {{form.username}}
+
+    <label>{{form.password1.label}}</label>
+    {{form.password1}}
+
+    <label>{{form.password2.label}}</label>
+    {{form.password2}}
+    <input style="margin-top:10px ;" class="button" type="submit" value="Register">
+</form>
+<p>Deja inscrit? <a href="{% url 'main:login' %}">Login</a></p>
