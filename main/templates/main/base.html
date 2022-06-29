@@ -1,0 +1,367 @@
+{% load static %}
+<!DOCTYPE html>
+<html> 
+<head>
+    <meta charset="utf-8">
+    <meta http-aquiv="Content-Type" content="text/html ; charset=UTF-8">
+    <meta  name="viewport" content="width=device-width , initial-scale=1">
+    <title>To Do List</title>
+    
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'main.css' %}"  >
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime&family=Nunito:wght@200&display=swap" rel="stylesheet">
+<!--
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime&family=Nunito:wght@200&display=swap" rel="stylesheet">
+
+-->
+
+<style>
+    body {
+        background-color: #FAFAFA;
+        font-family: 'Nunito', sans-serif;
+        padding-top: 50px;
+    }
+
+    h2{
+        font-family : 'Raleway', 
+    }
+    h3{
+        font-family : 'Raleway', 
+    }
+    h4{
+        font-family : 'Raleway', 
+    }
+    h5{
+        font-family : 'Raleway', 
+    }
+    h6{
+        font-family : 'Raleway', 
+    }
+    h1{
+        font-family : 'Raleway', 
+    }
+
+    a,
+    p {
+        color: #4b5156
+    }
+
+    a {
+        font-weight: 600;
+    }
+
+    .containeri {
+        max-width: 550px;
+        margin: auto;
+        background-color: #fff;
+        -webkit-box-shadow: 2px 2px 13px -4px #fff;
+        box-shadow: 2px 2px 13px -4px #fff;
+    }
+
+    input {
+        outline: none;
+        border: none;
+    }
+
+    .header-bar {
+        display: flex;
+        justify-content: space-between;
+        color: #fff;
+        padding: 10px;
+        border-radius: 5px 5px 0 0;
+        background: linear-gradient(90deg, #9fd3c7 0%,#5dacbd 43%,#5dacbd 100%);
+    }
+
+    .header-bar a {
+        color: rgb(247, 247, 247);
+        text-decoration: none;
+    }
+
+    .task-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #fff;
+        border-top: 1px solid #dfe4ea;
+        overflow: hidden;
+    }
+
+    .task-title {
+        display: flex;
+        padding: 20px;
+    }
+
+    .task-title a {
+        text-decoration: none;
+        color: #4b5156;
+        margin-left: 10px;
+    }
+
+    .task-complete-icon {
+        height: 20px;
+        width: 20px;
+        background-color: #99f0ca;
+        border-radius: 50%;
+    }
+
+    .task-incomplete-icon {
+        height: 20px;
+        width: 20px;
+        background-color: #eadca6;
+        border-radius: 50%;
+    }
+
+    .delete-link {
+        text-decoration: none;
+        font-weight: 900;
+        color: #9cd3d3;
+        font-size: 22px;
+        line-height: 0;
+        padding: 20px 0px;
+    }
+
+    /*Handle Classes*/
+
+    .handle {
+        display: inline-block;
+        padding: 20px 16px;
+        cursor: grab;
+        user-select: none;
+    }
+
+    .handle:after,
+    .handle:before {
+        display: block;
+        content: "";
+    }
+
+    .handle:active,
+    .handle:active:before,
+    .handle:active:after {
+        cursor: grabbing;
+    }
+
+    .dropArea {
+        background-color: #f1f2f6;
+        color: black;
+        border: #ced6e0 1px solid;
+    }
+
+    .selectedTask {
+        opacity: 0.6;
+    }
+
+
+    #add-link {
+        color:#5dacbd;
+        text-decoration: none;
+        font-size: 42px;
+        text-shadow: 1px 1px #82acff;
+    }
+
+    #search-add-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+    }
+
+    @media screen and (max-width:320px) {
+        #search-add-wrapper {
+            padding: 10px;
+        }
+    }
+
+    input[type=text],
+    input[type=password],
+    textarea {
+        border: 1px solid #757575;
+        border-radius: 5px;
+        padding: 10px;
+        width: 90%;
+    }
+
+    label {
+        padding-top: 10px !important;
+        display: block;
+    }
+
+    ::placeholder {
+        font-weight: 300;
+        opacity: 0.5;
+    }
+
+    .button {
+        border: 1px solid #757575;
+        background-color: #FFF;
+        color:#5dacbd;
+        padding: 10px;
+        font-size: 14px;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+</style>
+<!--************************************************************************************************************************************************************************************************
+*********************************************************************************************************
+**********************************************************************************************************************
+************************************************************
+******************************************************************************************************************************
+******************************************************************************************************-->
+
+<meta name="description" content="">
+<link rel="icon" type="image/png" href="{% static 'favicon.ico' %}">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Raleway:400,600,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'assets/css/slick.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/slick-theme.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/animate.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/fonticons.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/font-awesome.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/bootstrap.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/bootsnav.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}" />
+<script src="{% static 'assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js' %}"></script>
+
+</head>
+<body data-spy="scroll" data-target=".navbar-collapse">
+    <!--End off Preloader -->
+
+
+    <div class="culmn">
+        <!--Home page style-->
+
+
+        <nav class="navbar navbar-default navbar-fixed white no-background bootsnav">
+            <!-- Start Top Search -->
+            <div class="top-search">
+                <div class="container">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+                    </div>
+                </div>
+            </div>
+            <!-- End Top Search -->
+
+            <div class="container">    
+                <!-- Start Atribute Navigation -->
+                <div class="attr-nav">
+                    <ul>
+                        <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
+                    </ul>
+                </div>        
+                <!-- End Atribute Navigation -->
+
+                <!-- Start Header Navigation -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <a class="navbar-brand" href="#brand">
+
+                        <img src="{% static 'assets/images/logo.png'  %}" class="logo logo-display m-top-10" alt="">
+                        <img src="{% static 'assets/images/logo.jpg' %}" class="logo logo-scrolled" alt="">
+
+                    </a>
+                </div>
+                <!-- End Header Navigation -->
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="navbar-menu">
+                    <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+                        <li><a href="{% url 'main:home' %}">HELLO</a></li>                    
+                        <li><a href="{% url 'main:home' %}">ABOUT</a></li>                    
+                        <li><a href="{% url 'main:home' %}">SERVICES</a></li>                    
+                        <li><a href="{% url 'main:task-create' %}">ADD TASK</a></li>                    
+                        <li><a href="{% url 'main:tasks' %}">MY TASKS </a></li>                    
+                        <li><a href="{% url 'main:logout' %}">LOGOUT</a></li>                    
+                        <li><a href="{% url 'main:login' %}">LOGIN</a></li>  
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div>  
+        </nav>
+
+
+        <!--Home Sections-->
+
+        <section id="hello" class="home bg-mega">
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="main_home">
+                        <div class="home_text">
+                        </div>
+                        <div class="home_btns m-top-40">
+                        </div>
+                    </div>
+                </div><!--End off row-->
+            </div><!--End off container -->
+        </section> <!--End off Home Sections-->
+<br/>
+            <div class="containeri">
+                {% block content %} {% endblock %}
+                <br/>
+
+            </div>
+
+        <!-- scroll up-->
+        <div class="scrollup">
+            <a href="#"><i class="fa fa-chevron-up"></i></a>
+        </div><!-- End off scroll up -->
+    </div>
+    <script src="{% static 'assets/js/vendor/jquery-1.11.2.min.js' %}"></script>
+    <script src="{% static 'assets/js/vendor/bootstrap.min.js' %}"></script>
+
+    <script src="{% static 'assets/js/jquery.magnific-popup.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.easing.1.3.js' %}"></script>
+    <script src="{% static 'assets/js/slick.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.collapse.js' %}"></script>
+    <script src="{% static 'assets/js/bootsnav.js' %}"></script>
+
+
+    <!-- paradise slider js -->
+
+
+    <script src="http://maps.google.com/maps/api/js?key=AIzaSyD_tAQD36pKp9v4at5AnpGbvBUsLCOSJx8"></script>
+    <script src="{% static 'assets/js/gmaps.min.js' %}"></script>
+
+    <script>
+                    function showmap() {
+                        var mapOptions = {
+                            zoom: 8,
+                            scrollwheel: false,
+                            center: new google.maps.LatLng(-34.397, 150.644),
+                            mapTypeId: google.maps.MapTypeId.ROADMAP
+                        };
+                        var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+                        $('.mapheight').css('height', '350');
+                        $('.maps_text h3').hide();
+                    }
+
+    </script>
+
+
+
+
+
+    <script src="{% static 'assets/js/plugins.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
+
+</body>
+</html>
+
